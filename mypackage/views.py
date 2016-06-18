@@ -5,7 +5,7 @@ from django.shortcuts import render
 from evo_server.settings import ON_OPENSHIFT
 
 if ON_OPENSHIFT:
-    f = open(os.path.join(os.environ.get('DOCUMENT_ROOT', ''), 'epitets.txt'), 'r')
+    f = open(os.path.join(os.environ.get('OPENSHIFT_REPO_DIR', ''), "epitets.txt"), 'r')
 else:
     f = open("epitets.txt", 'r')
 epitet_list = []
