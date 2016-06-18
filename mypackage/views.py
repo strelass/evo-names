@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import json
 import os
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -30,8 +31,8 @@ def index(request):
             epitet = name_epitet[name]
             text = (u"Рад тебя видеть снова, %s %s!" % (epitet, name))
             return HttpResponse(
-                text,
-                content_type="text/plain"
+                json.dumps(name_epitet),
+                content_type="application/json"
             )
     context = {}
     return render(request, "index.html", context)
