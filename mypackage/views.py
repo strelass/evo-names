@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import json
 import os
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -23,16 +22,17 @@ def index(request):
     if request.method == "POST":
         name = request.POST["name"]
         if name:
+            global name_epitet
             if name not in name_epitet.keys():
                 global temp_set
-                name_epitet[name] = temp_set.pop()
                 if len(temp_set) == 0:
                     temp_set |= CONST_EPITET_SET
+                name_epitet[name] = temp_set.pop()
             epitet = name_epitet[name]
             text = (u"Рад тебя видеть снова, %s %s!" % (epitet, name))
             return HttpResponse(
-                json.dumps(name_epitet),
-                content_type="application/json"
+                text,
+                content_type="text/plain"
             )
     context = {}
     return render(request, "index.html", context)
