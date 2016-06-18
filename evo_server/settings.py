@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+ON_OPENSHIFT = False
+if 'OPENSHIFT_REPO_DIR' in os.environ:
+    ON_OPENSHIFT = True
 
 # Application definition
 

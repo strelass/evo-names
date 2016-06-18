@@ -2,9 +2,12 @@
 import os
 from django.http import HttpResponse
 from django.shortcuts import render
+from evo_server.settings import ON_OPENSHIFT
 
-
-f = open(os.path.join("epitets.txt"), 'r')
+if ON_OPENSHIFT:
+    f = open(os.getenv('DOCUMENT_ROOT') + "epitets.txt", 'r')
+else:
+    f = open("epitets.txt", 'r')
 epitet_list = []
 for line in f:
     epitet_list += [line.decode('cp1251')]
