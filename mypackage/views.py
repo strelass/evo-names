@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
+import os
 from django.http import HttpResponse
 from django.shortcuts import render
 
 
-f = open("epitets.txt", 'r')
+f = open(os.path.join("epitets.txt"), 'r')
 epitet_list = []
 for line in f:
     epitet_list += [line.decode('cp1251')]
