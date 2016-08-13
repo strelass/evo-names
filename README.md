@@ -1,0 +1,1 @@
+Simple web-application with 1 page. The page contains text input field and submit button. After filling the field with your name and submitting the form u will get alert with greetings. For each name the massage would be different and for the same it would be the same.
